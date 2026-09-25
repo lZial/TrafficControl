@@ -16,6 +16,10 @@ python -m venv .venv
 pip install -r requirements.txt
 pip install tensorboard rich
 
+Открытие папки проекта:
+cd /d D:\traffic_control
+
+
 Конфигурации
 
 В проекте три конфигурации с разной интенсивностью потока:
