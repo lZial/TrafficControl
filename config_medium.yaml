@@ -1,0 +1,73 @@
+simulation:
+  dt: 1.0
+  horizon: 3600
+  n_episodes: 30
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+
+topology:
+  n_intersections: 1
+  approaches: ["N", "E", "S", "W"]
+  n_phases: 2
+  phase_names: ["NS", "EW"]
+  phase_green:
+    NS: ["N", "S"]
+    EW: ["E", "W"]
+
+traffic:
+  arrival_rate:
+    N: 0.12
+    E: 0.12
+    S: 0.08
+    W: 0.08
+  service_rate: 0.50
+
+signal:
+  min_green: 5
+  max_green: 60
+  initial_phase: "NS"
+  c_switch: 1.0
+
+normalization:
+  max_queue: 50.0
+  max_wait: 300.0
+
+rl:
+  algorithm: "PPO"
+  policy: "MlpPolicy"
+  total_timesteps: 1000000
+  learning_rate: 0.0003
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.01
+  verbose: 1
+  model_path: "models/ppo_traffic.zip"
+  tensorboard_log: "data/raw/tb_ppo/"
+
+adaptive:
+  queue_low_threshold: 2
+  queue_high_threshold: 8
+
+fixed:
+  lost_time_per_phase: 4.0
+  saturation_flow: 0.5
+  min_cycle: 30
+  max_cycle: 120
+
+metrics:
+  names: ["W", "Lmax", "throughput", "total_delay"]
+
+stats:
+  confidence: 0.95
+  test: "welch"
+  effect_size: "cohen_d"
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  models: "models"
+  figures: "reports/figures"
+  tables: "reports/tables"
