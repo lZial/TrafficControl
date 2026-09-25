@@ -25,7 +25,7 @@ cd /d D:\traffic_control
 Полный пайплайн (обучение PPO + все прогоны + сравнения) одной командой:
 
 Полная установка с нуля и запуск:
-    setup_and_run.bat
+    SetupFROMZERO_and_run.bat
 
 Windows:
     run_all.bat
