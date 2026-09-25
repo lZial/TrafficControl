@@ -16,9 +16,9 @@ python -m venv .venv
 pip install -r requirements.txt
 pip install tensorboard rich
 
-Открытие папки проекта:
+Открытие папки проекта и активация окружения:
 cd /d D:\traffic_control
-
+.venv\Scripts\activate
 
 Конфигурации
 
